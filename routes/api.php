@@ -23,6 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('forms/{all?}', [FormController::class, 'index']);
 Route::apiResource('forms', FormController::class);
 Route::apiResource('questions', FormQuestionController::class);
 Route::apiResource('options', FormQuestionOptionController::class);

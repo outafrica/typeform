@@ -14,14 +14,25 @@ class FormController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($all = null)
     {
-        $data = Form::where('is_approved', 1)->get();
+        $response = array();
 
-        $response = array(
-            'status' => 200,
-            'data' => FormResource::collection($data),
-        );
+        if ($all != null) {
+            $data = Form::all();
+
+            $response = array(
+                'status' => 200,
+                'data' => FormResource::collection($data),
+            );
+        } else {
+            $data = Form::where('is_approved', 1)->get();
+
+            $response = array(
+                'status' => 200,
+                'data' => FormResource::collection($data),
+            );
+        }
 
         return response()->json($response, 200);
     }
