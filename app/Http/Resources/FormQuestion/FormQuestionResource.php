@@ -16,7 +16,7 @@ class FormQuestionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'form' => $this->form,
+            'form_id' => $this->form->id,
             'question_category' => $this->category->name,
             'question' => $this->question,
             'option_type' => $this->optionType->name,
